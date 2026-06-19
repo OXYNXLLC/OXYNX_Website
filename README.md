@@ -1,6 +1,6 @@
 # OxynX website
 
-Modern, static marketing site for **OxynX** (`www.oxynx.com`) — built as plain HTML/CSS/JS so it
+Modern, static marketing site for **OxynX** (`oxynx.com`) — built as plain HTML/CSS/JS so it
 deploys to **GitHub Pages** with zero build step.
 
 ```
@@ -10,7 +10,7 @@ oxynx-site/
 ├─ terms/index.html      # Software License & Beta Testing Agreement (verbatim)
 ├─ 404.html              # Branded not-found page
 ├─ favicon.svg
-├─ CNAME                 # www.oxynx.com  (custom domain)
+├─ CNAME                 # oxynx.com  (custom domain)
 ├─ robots.txt, sitemap.xml
 └─ .nojekyll             # serve folders as-is on GitHub Pages
 ```
@@ -55,8 +55,8 @@ git push -u origin main
 **2. Turn on Pages:** GitHub repo → **Settings → Pages** → *Build and deployment* →
 Source: **Deploy from a branch** → Branch: **main** / **/(root)** → Save.
 
-**3. Custom domain:** the included `CNAME` file already sets **www.oxynx.com**. In
-Settings → Pages → *Custom domain*, confirm `www.oxynx.com` and tick **Enforce HTTPS**.
+**3. Custom domain:** the included `CNAME` file already sets **oxynx.com**. In
+Settings → Pages → *Custom domain*, confirm `oxynx.com` and tick **Enforce HTTPS**.
 
 ## DNS (at your domain registrar for oxynx.com)
 
@@ -71,7 +71,7 @@ Point the domain to GitHub Pages:
 | A     | `@`   | `185.199.111.153`              |
 
 (Optionally add the matching `AAAA` records: `2606:50c0:8000::153`, `…8001::153`, `…8002::153`,
-`…8003::153`.) GitHub then auto-redirects the apex `oxynx.com` → `www.oxynx.com`.
+`…8003::153`.) GitHub then auto-redirects `www.oxynx.com` → the apex `oxynx.com`.
 
 > Switching the domain from the old Google Site to GitHub Pages = just updating these DNS records.
 > Prefer the **apex** `oxynx.com` as primary instead of `www`? Change `CNAME` to `oxynx.com`,
