@@ -5,20 +5,67 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Page not found — OxynX</title>
   <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#291735" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/styles.css" />
+  <style>
+  :root {
+    --deep: #291735;
+    --accent: #4b1e78;
+    --accent-2: #7a42b1;
+    --gold: #ffd56b;
+    --bg-soft: #faf6fe;
+    --bg-tint: #f3ecfb;
+    --text: #271c33;
+    --muted: #6a6080;
+    --line: rgba(74, 30, 120, 0.12);
+    --line-strong: rgba(74, 30, 120, 0.22);
+    --shadow-sm: 0 4px 16px rgba(41, 23, 53, 0.06);
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-display: "Sora", var(--font-sans);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: var(--font-sans); color: var(--text);
+    background: var(--bg-soft); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  h1 { font-family: var(--font-display); color: var(--deep); line-height: 1.05; letter-spacing: -0.03em; margin: 0; font-weight: 800; }
+  .container { width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent); background: var(--bg-tint); border: 1px solid var(--line);
+    padding: 7px 14px; border-radius: 999px;
+  }
+  .eyebrow .dot { width: 7px; height: 7px; border-radius: 999px; background: var(--gold); box-shadow: 0 0 0 4px rgba(255, 213, 107, 0.25); }
+  .btn {
+    display: inline-flex; align-items: center; gap: 9px; font-weight: 600; font-size: 15.5px;
+    padding: 13px 22px; border-radius: 999px; border: 1px solid transparent; cursor: pointer; text-decoration: none;
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .btn--primary { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%); color: #fff; box-shadow: 0 14px 30px rgba(75, 30, 120, 0.28); }
+  .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 20px 38px rgba(75, 30, 120, 0.34); }
+  .btn--ghost { background: #fff; color: var(--deep); border-color: var(--line-strong); box-shadow: var(--shadow-sm); }
+  .btn--ghost:hover { transform: translateY(-2px); border-color: var(--accent-2); }
+  .hero { position: relative; overflow: hidden; display: flex; align-items: center; min-height: 86vh; }
+  .hero__bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+  .hero__bg .blob { position: absolute; border-radius: 999px; filter: blur(70px); opacity: 0.5; }
+  .hero__bg .b1 { width: 520px; height: 520px; top: -180px; right: -120px; background: radial-gradient(circle, rgba(122,66,177,0.42), transparent 70%); }
+  .hero__bg .b2 { width: 420px; height: 420px; bottom: -200px; left: -140px; background: radial-gradient(circle, rgba(255,213,107,0.30), transparent 70%); }
+  .lede { font-size: 19px; color: var(--muted); max-width: 540px; margin: 18px auto 0; line-height: 1.7; }
+  .actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 30px; }
+  </style>
 </head>
 <body>
-  <section class="hero" style="display:flex;align-items:center;min-height:80vh">
+  <section class="hero">
     <div class="hero__bg"><span class="blob b1"></span><span class="blob b2"></span></div>
     <div class="container" style="position:relative;z-index:2;text-align:center">
       <span class="eyebrow"><span class="dot"></span>404</span>
       <h1 style="font-size:clamp(40px,8vw,84px);margin:20px 0 0">Page not found</h1>
-      <p class="hero__lede" style="margin:18px auto 0">The page you’re looking for moved or never existed. Let’s get you back on track.</p>
-      <div class="hero__actions" style="justify-content:center">
+      <p class="lede">The page you’re looking for moved or never existed. Let’s get you back on track.</p>
+      <div class="actions">
         <a class="btn btn--primary" href="/">Back to home</a>
         <a class="btn btn--ghost" href="mailto:admin@oxynx.com">Contact us</a>
       </div>

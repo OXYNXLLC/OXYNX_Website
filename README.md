@@ -9,18 +9,21 @@ oxynx-site/
 ├─ privacy/index.html    # Privacy Policy (verbatim)
 ├─ terms/index.html      # Software License & Beta Testing Agreement (verbatim)
 ├─ 404.html              # Branded not-found page
-├─ assets/
-│  ├─ styles.css         # Design system
-│  └─ app.js             # Nav, mobile menu, scroll reveal
 ├─ favicon.svg
 ├─ CNAME                 # www.oxynx.com  (custom domain)
 ├─ robots.txt, sitemap.xml
-└─ .nojekyll             # serve folders/assets as-is on GitHub Pages
+└─ .nojekyll             # serve folders as-is on GitHub Pages
 ```
+
+> **Each page is fully self-contained:** its CSS lives in an inline `<style>` block and its
+> small JS in an inline `<script>`. There is no external stylesheet to fetch, so every page
+> renders correctly in any context — a preview pane, a `file://` open, or GitHub Pages — with
+> no broken-styling window while assets load.
 
 ## Preview locally
 
-Just open `index.html` in a browser, or serve the folder:
+Just open `index.html` in a browser (double-click works — pages are self-contained), or serve
+the folder:
 
 ```bash
 # from this directory
@@ -28,10 +31,10 @@ python -m http.server 8080
 # then visit http://localhost:8080
 ```
 
-> Links use root-absolute paths (`/assets/...`, `/privacy/`). They work at a domain root
-> (your custom domain) and with `python -m http.server`. They will **not** work under a GitHub
-> *project* URL like `username.github.io/repo/` — which is fine, because we deploy to the custom
-> domain root.
+> Internal links are **relative** (`privacy/`, `../terms/`), so the site works the same whether
+> opened from disk, served locally, or deployed to the `oxynx.com` root on GitHub Pages.
+> (`404.html` is the one exception: it links to `/` and `/favicon.svg` with root-absolute paths,
+> which is correct because GitHub serves it for missing URLs at any depth.)
 
 ## Deploy to GitHub Pages
 
@@ -80,7 +83,10 @@ GitHub follows shortly after.
 ## Editing
 
 - **Content & copy:** edit the `.html` files directly.
-- **Colors / spacing / type:** all tokens live at the top of `assets/styles.css` (`:root`).
+- **Colors / spacing / type:** brand tokens live in the `:root { … }` block at the top of each
+  page's inline `<style>` (start with `index.html`). Keep them in sync across pages if you
+  rebrand — the landing page carries the full design system; the legal pages and 404 carry the
+  subset they use.
 - **Legal pages** (`privacy/`, `terms/`) carry the agreement text **verbatim** — only the design
   changed. Update wording there if Legal revises it.
 - Brand: deep purple `#291735` / accent `#4b1e78` / gold `#ffd56b`. Fonts: Sora (display) + Inter.
