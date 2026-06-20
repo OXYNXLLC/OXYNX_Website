@@ -249,6 +249,7 @@
   .feature__ic svg { width: 24px; height: 24px; color: var(--accent); }
   .feature h3 { font-size: 19px; }
   .feature p { color: var(--muted); margin: 9px 0 0; font-size: 15.5px; line-height: 1.65; }
+  .feature-grid .feature:nth-child(7) { grid-column: 2; }  /* centre the lone 7th card on desktop */
 
   /* ---------- privacy / security band ---------- */
   .security { background: linear-gradient(160deg, var(--deep) 0%, var(--accent) 100%); color: #fff; border-radius: 0; position: relative; overflow: hidden; }
@@ -359,6 +360,7 @@
     .hero__grid { grid-template-columns: 1fr; gap: 44px; }
     .mock { order: -1; }
     .feature-grid, .steps { grid-template-columns: repeat(2,1fr); }
+    .feature-grid .feature:nth-child(7) { grid-column: auto; }
     .security__grid, .mv__grid { grid-template-columns: 1fr; }
     .footer__top { grid-template-columns: 1fr 1fr; }
   }
@@ -599,7 +601,7 @@
       <div class="section-head reveal">
         <span class="eyebrow"><span class="dot"></span>One clear system</span>
         <h2>Everything your health needs, in one place</h2>
-        <p>Records, medications, nutrition, prevention and more — connected so your care actually keeps moving.</p>
+        <p>Records, medications, nutrition, workouts, prevention and more — connected so your care actually keeps moving.</p>
       </div>
       <div class="feature-grid">
         <article class="feature reveal">
@@ -616,6 +618,11 @@
           <div class="feature__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7a4 4 0 008 0V2M7 2v20M21 15V2a4 4 0 00-3 6.9c0 .7.5 6.1 3 6.1zM18 15v7"/></svg></div>
           <h3>Nutrition &amp; meal plans</h3>
           <p>Personalized meal plans, logging, and calorie tracking tailored to your goals and preferences.</p>
+        </article>
+        <article class="feature reveal">
+          <div class="feature__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7v10M8 5v14M16 5v14M20 7v10M8 12h8"/></svg></div>
+          <h3>Workout planner</h3>
+          <p>Personalized workout plans built around your goals and fitness level — so movement and nutrition work together.</p>
         </article>
         <article class="feature reveal">
           <div class="feature__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
