@@ -441,6 +441,54 @@
     .mv__card { padding: 26px 22px; }
     .cta-card { padding: 30px 18px; }
   }
+
+  /* ---------- superior mobile polish ---------- */
+  .mdock { display: none; }
+  @media (max-width: 760px) {
+    #features, #security, #how, #mission, #download { scroll-margin-top: 80px; }
+
+    /* centered, focused hero */
+    .hero__copy { text-align: center; }
+    .hero__lede { margin-left: auto; margin-right: auto; }
+    .hero__actions { justify-content: center; }
+    .hero__trust { justify-content: center; }
+
+    /* tactile tap feedback */
+    .btn:active { transform: scale(0.97); }
+    .feature:active { transform: scale(0.99); }
+
+    /* icon-left feature cards */
+    .feature { display: grid; grid-template-columns: auto 1fr; column-gap: 15px; row-gap: 4px; align-items: start; padding: 18px; }
+    .feature__ic { grid-column: 1; grid-row: 1 / span 2; width: 44px; height: 44px; margin-bottom: 0; align-self: start; }
+    .feature h3 { grid-column: 2; grid-row: 1; align-self: center; }
+    .feature p { grid-column: 2; grid-row: 2; }
+
+    /* roomier mobile menu */
+    .nav.open .nav__links { gap: 0; padding: 8px 18px 18px; }
+    .nav.open .nav__links a { font-size: 17px; font-weight: 500; }
+
+    /* room so the sticky dock never hides the footer */
+    .footer { padding-bottom: 96px; }
+
+    /* sticky bottom download dock */
+    .mdock {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 80;
+      background: rgba(20,12,28,0.93); backdrop-filter: saturate(160%) blur(14px);
+      border: 1px solid rgba(255,255,255,0.14); border-radius: 18px;
+      padding: 10px 12px 10px 17px;
+      padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+      box-shadow: 0 16px 40px rgba(0,0,0,0.38);
+      transform: translateY(160%); opacity: 0;
+      transition: transform .38s cubic-bezier(.2,.7,.3,1), opacity .3s ease;
+    }
+    .mdock.show { transform: translateY(0); opacity: 1; }
+    .mdock__text { display: flex; flex-direction: column; line-height: 1.15; min-width: 0; }
+    .mdock__text b { font-family: var(--font-display); font-size: 14.5px; font-weight: 700; color: #fff; }
+    .mdock__text span { font-size: 11.5px; color: rgba(255,255,255,0.68); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .mdock__cta { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 7px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; font-weight: 700; font-size: 14px; padding: 11px 20px; border-radius: 999px; box-shadow: 0 8px 20px rgba(75,30,120,0.45); }
+    .mdock__cta:active { transform: scale(0.97); color: #fff; }
+  }
   </style>
 </head>
 <body>
@@ -718,6 +766,14 @@
     </div>
   </footer>
 
+  <!-- Mobile sticky download dock (phones only) -->
+  <div class="mdock" id="mdock" aria-hidden="true">
+    <div class="mdock__text"><b>Get the OxynX app</b><span>Private health, in your pocket</span></div>
+    <a class="mdock__cta" href="#download">Download
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </a>
+  </div>
+
   <script>
   (function () {
     "use strict";
@@ -756,6 +812,23 @@
         { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
       );
       revealEls.forEach(function (el) { io.observe(el); });
+    }
+
+    // sticky mobile download dock — appears after the hero, hides over the download section
+    var dock = document.getElementById("mdock");
+    if (dock) {
+      var dlSection = document.getElementById("download");
+      var dlInView = false;
+      var updateDock = function () {
+        dock.classList.toggle("show", window.scrollY > 480 && !dlInView);
+      };
+      if ("IntersectionObserver" in window && dlSection) {
+        new IntersectionObserver(function (es) {
+          dlInView = es[0].isIntersecting; updateDock();
+        }, { threshold: 0.2 }).observe(dlSection);
+      }
+      updateDock();
+      window.addEventListener("scroll", updateDock, { passive: true });
     }
   })();
   </script>
