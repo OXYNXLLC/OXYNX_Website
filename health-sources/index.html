@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Health information sources — OxynX</title>
+  <meta name="description" content="The trusted, publicly available sources that inform OxynX's health, nutrition, prevention, and screening guidance, with links and citations." />
+  <meta name="theme-color" content="#291735" />
+  <link rel="canonical" href="https://oxynx.com/health-sources/" />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+  :root {
+    --ink: #1c1026; --deep: #291735; --accent: #4b1e78; --accent-2: #7a42b1; --gold: #ffd56b; --gold-soft: #fff3bf;
+    --bg: #ffffff; --bg-soft: #faf6fe; --bg-tint: #f3ecfb; --surface: #ffffff;
+    --text: #271c33; --muted: #6a6080; --line: rgba(74,30,120,0.12); --line-strong: rgba(74,30,120,0.22);
+    --radius: 18px; --shadow-sm: 0 4px 16px rgba(41,23,53,0.06); --shadow: 0 18px 44px rgba(41,23,53,0.10);
+    --maxw: 1160px;
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-display: "Sora", var(--font-sans);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { margin: 0; font-family: var(--font-sans); color: var(--text); background: var(--bg); line-height: 1.6; font-size: 17px; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: var(--accent-2); }
+  h1, h2, h3, h4 { font-family: var(--font-display); color: var(--deep); line-height: 1.1; letter-spacing: -0.02em; margin: 0; font-weight: 700; }
+  .container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); background: var(--bg-tint); border: 1px solid var(--line); padding: 7px 14px; border-radius: 999px; }
+  .eyebrow .dot { width: 7px; height: 7px; border-radius: 999px; background: var(--gold); box-shadow: 0 0 0 4px rgba(255,213,107,0.25); }
+  .btn { display: inline-flex; align-items: center; gap: 9px; font-family: var(--font-sans); font-weight: 600; font-size: 15.5px; padding: 13px 22px; border-radius: 999px; border: 1px solid transparent; cursor: pointer; transition: transform .18s ease, box-shadow .18s ease; white-space: nowrap; }
+  .btn--primary { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%); color: #fff; box-shadow: 0 14px 30px rgba(75,30,120,0.28); }
+  .btn--primary:hover { transform: translateY(-2px); color: #fff; box-shadow: 0 20px 38px rgba(75,30,120,0.34); }
+
+  .nav { position: sticky; top: 0; z-index: 60; backdrop-filter: saturate(180%) blur(14px); background: rgba(255,255,255,0.74); border-bottom: 1px solid transparent; transition: border-color .2s ease, box-shadow .2s ease; }
+  .nav.is-stuck { border-color: var(--line); box-shadow: 0 6px 24px rgba(41,23,53,0.06); }
+  .nav__inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .brand { display: inline-flex; align-items: center; gap: 11px; font-family: var(--font-display); font-weight: 700; font-size: 20px; color: var(--deep); letter-spacing: -0.02em; }
+  .brand:hover { color: var(--deep); }
+  .nav__links { display: flex; align-items: center; gap: 30px; }
+  .nav__links a { color: var(--muted); font-weight: 500; font-size: 15px; }
+  .nav__links a:hover { color: var(--deep); }
+  .nav__cta { display: flex; align-items: center; gap: 12px; }
+  .nav__toggle { display: none; background: none; border: 1px solid var(--line-strong); border-radius: 12px; width: 42px; height: 42px; align-items: center; justify-content: center; cursor: pointer; }
+  .nav__toggle svg { width: 22px; height: 22px; color: var(--deep); }
+
+  .legal-hero { background: linear-gradient(160deg, var(--deep), var(--accent)); color: #fff; padding: 56px 0 44px; }
+  .legal-hero .eyebrow { background: rgba(255,255,255,0.12); color: #fff; border-color: rgba(255,255,255,0.2); }
+  .legal-hero h1 { color: #fff; font-size: clamp(34px, 5vw, 52px); margin: 18px 0 0; }
+  .legal-hero p { color: rgba(255,255,255,0.84); margin: 16px 0 0; max-width: 740px; font-size: 17px; line-height: 1.7; }
+  .legal-hero .back { display: inline-flex; align-items: center; gap: 7px; color: rgba(255,255,255,0.8); font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+  .legal-hero .back svg { width: 16px; height: 16px; }
+
+  .wrap { padding: 48px 0 90px; background: var(--bg); }
+  .doc { max-width: 840px; margin: 0 auto; }
+  .doc > p.lead { font-size: 17.5px; color: var(--text); margin: 0 0 12px; line-height: 1.8; }
+  .doc h2 { font-size: 21px; color: var(--deep); margin: 38px 0 8px; }
+  .doc p { color: var(--text); margin: 0 0 14px; font-size: 16.5px; line-height: 1.78; }
+  .src { display: grid; gap: 12px; margin: 6px 0 8px; }
+  .src a.card { display: block; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; box-shadow: var(--shadow-sm); transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease; }
+  .src a.card:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: var(--line-strong); }
+  .src .name { font-family: var(--font-display); font-weight: 700; font-size: 16.5px; color: var(--deep); display: flex; align-items: center; gap: 8px; }
+  .src .name svg { width: 15px; height: 15px; color: var(--accent-2); flex: 0 0 auto; }
+  .src .desc { color: var(--muted); font-size: 14.5px; margin-top: 4px; }
+  .src .url { color: var(--accent); font-size: 13px; font-weight: 600; margin-top: 6px; word-break: break-all; }
+  .note { background: var(--bg-soft); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: var(--radius); padding: 16px 20px; margin-top: 30px; }
+  .note p { margin: 0; font-size: 15px; color: var(--muted); }
+
+  .footer { background: var(--ink); color: rgba(255,255,255,0.7); padding: 60px 0 30px; }
+  .footer__bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13px; color: rgba(255,255,255,0.5); }
+  .footer__bottom a { color: rgba(255,255,255,0.6); }
+  .footer__bottom a:hover { color: var(--gold-soft); }
+
+  @media (max-width: 760px) {
+    .container { padding: 0 18px; }
+    .nav__links { display: none; }
+    .nav__toggle { display: inline-flex; }
+    .nav.open .nav__links { display: flex; flex-direction: column; gap: 0; position: absolute; top: 72px; left: 0; right: 0; background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--line); padding: 8px 18px 16px; box-shadow: var(--shadow); }
+    .nav.open .nav__links a { padding: 13px 2px; font-size: 17px; }
+    .nav__cta .btn--primary { padding: 10px 15px; font-size: 14px; }
+    .brand { font-size: 18px; }
+    .legal-hero { padding: 40px 0 32px; }
+    .wrap { padding: 34px 0 72px; }
+    .doc h2 { font-size: 20px; }
+    .doc p, .doc > p.lead { font-size: 16px; }
+  }
+  </style>
+</head>
+<body>
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="../" aria-label="OxynX home">OxynX</a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="../#features">Features</a>
+        <a href="../#security">Privacy &amp; security</a>
+        <a href="../privacy/">Privacy Policy</a>
+      </nav>
+      <div class="nav__cta">
+        <a class="btn btn--primary" href="mailto:admin@oxynx.com?subject=OxynX%20Health%20Sources">Contact us</a>
+        <button class="nav__toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="legal-hero">
+    <div class="container">
+      <a class="back" href="../"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>Back to home</a>
+      <span class="eyebrow"><span class="dot"></span>Sources &amp; citations</span>
+      <h1>Health information sources</h1>
+      <p>OxynX’s preventive, nutrition, activity, and general health guidance is informed by trusted, publicly available, and widely recognized health authorities. Below are the primary sources our content draws from, with links you can review directly.</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="container">
+      <article class="doc">
+        <p class="lead">OxynX organizes information and surfaces general, educational health and preventive guidance. That guidance is based on the publicly available recommendations of the organizations listed below. OxynX does not provide a diagnosis and is not a substitute for professional medical advice.</p>
+
+        <h2>Prevention &amp; screenings</h2>
+        <div class="src">
+          <a class="card" href="https://www.uspreventiveservicestaskforce.org/" target="_blank" rel="noopener noreferrer">
+            <div class="name"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>U.S. Preventive Services Task Force (USPSTF)</div>
+            <div class="desc">Evidence-based recommendations for preventive screenings and services.</div>
+            <div class="url">uspreventiveservicestaskforce.org</div>
+          </a>
+          <a class="card" href="https://www.cdc.gov/" target="_blank" rel="noopener noreferrer">
+            <div class="name"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>Centers for Disease Control and Prevention (CDC)</div>
+            <div class="desc">U.S. public-health guidance on prevention, vaccination, and conditions.</div>
+            <div class="url">cdc.gov</div>
+          </a>
+        </div>
+
+        <h2>General health information</h2>
+        <div class="src">
+          <a class="card" href="https://medlineplus.gov/" target="_blank" rel="noopener noreferrer">
+            <div class="name"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>MedlinePlus — U.S. National Library of Medicine (NIH)</div>
+            <div class="desc">Plain-language health and condition information from the NIH.</div>
+            <div class="url">medlineplus.gov</div>
+          </a>
+          <a class="card" href="https://www.who.int/" target="_blank" rel="noopener noreferrer">
+            <div class="name"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>World Health Organization (WHO)</div>
+            <div class="desc">International public-health guidance and fact sheets.</div>
+            <div class="url">who.int</div>
+          </a>
+        </div>
+
+        <h2>Nutrition</h2>
+        <div class="src">
+          <a class="card" href="https://www.dietaryguidelines.gov/" target="_blank" rel="noopener noreferrer">
+            <div class="name"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>Dietary Guidelines for Americans (USDA &amp; HHS)</div>
+            <div class="desc">Federal nutrition guidance underpinning meal and calorie recommendations.</div>
+            <div class="url">dietaryguidelines.gov</div>
+          </a>
+          <a class="card" href="https://www.myplate.gov/" target="_blank" rel="noopener noreferrer">
+            <div class="name"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>MyPlate (USDA)</div>
+            <div class="desc">Practical, personalized nutrition and portion guidance.</div>
+            <div class="url">myplate.gov</div>
+          </a>
+        </div>
+
+        <h2>Physical activity &amp; workouts</h2>
+        <div class="src">
+          <a class="card" href="https://health.gov/our-work/nutrition-physical-activity/physical-activity-guidelines" target="_blank" rel="noopener noreferrer">
+            <div class="name"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>Physical Activity Guidelines for Americans (HHS)</div>
+            <div class="desc">Federal guidance on exercise type, frequency, and intensity.</div>
+            <div class="url">health.gov</div>
+          </a>
+        </div>
+
+        <h2>Medications</h2>
+        <div class="src">
+          <a class="card" href="https://www.fda.gov/drugs" target="_blank" rel="noopener noreferrer">
+            <div class="name"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>U.S. Food &amp; Drug Administration (FDA)</div>
+            <div class="desc">Authoritative drug labeling, safety, and approval information.</div>
+            <div class="url">fda.gov/drugs</div>
+          </a>
+        </div>
+
+        <h2>Reproductive &amp; cycle health</h2>
+        <div class="src">
+          <a class="card" href="https://www.acog.org/" target="_blank" rel="noopener noreferrer">
+            <div class="name"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>American College of Obstetricians and Gynecologists (ACOG)</div>
+            <div class="desc">Clinical guidance for menstrual, cycle, and reproductive health.</div>
+            <div class="url">acog.org</div>
+          </a>
+          <a class="card" href="https://www.womenshealth.gov/" target="_blank" rel="noopener noreferrer">
+            <div class="name"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>Office on Women’s Health (OASH, HHS)</div>
+            <div class="desc">Government guidance on women’s and reproductive health.</div>
+            <div class="url">womenshealth.gov</div>
+          </a>
+        </div>
+
+        <div class="note">
+          <p>OxynX is not a medical provider and does not provide medical advice, diagnosis, or treatment. The information in the app is general and educational, drawn from the sources above, and is not a substitute for the judgment of a qualified health professional. Always consult your clinician for medical decisions. If this is an emergency, call your local emergency number. Questions? <a href="mailto:admin@oxynx.com?subject=Health%20Sources">admin@oxynx.com</a>.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom">
+        <div>© <span id="year">2026</span> OxynX, LLC. All rights reserved.</div>
+        <div><a href="../">Home</a> &nbsp;·&nbsp; <a href="../privacy/">Privacy</a> &nbsp;·&nbsp; <a href="../support/">Support</a> &nbsp;·&nbsp; <a href="mailto:admin@oxynx.com">admin@oxynx.com</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    "use strict";
+    document.querySelectorAll("#year").forEach(function (el) { el.textContent = new Date().getFullYear(); });
+    var nav = document.getElementById("nav");
+    if (nav) {
+      var onScroll = function () { nav.classList.toggle("is-stuck", window.scrollY > 8); };
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+    }
+    var toggle = document.getElementById("navToggle");
+    if (toggle && nav) {
+      toggle.addEventListener("click", function () {
+        var open = nav.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    }
+  })();
+  </script>
+</body>
+</html>
