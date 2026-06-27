@@ -249,7 +249,6 @@
   .feature__ic svg { width: 24px; height: 24px; color: var(--accent); }
   .feature h3 { font-size: 19px; }
   .feature p { color: var(--muted); margin: 9px 0 0; font-size: 15.5px; line-height: 1.65; }
-  .feature-grid .feature:nth-child(7) { grid-column: 2; }  /* centre the lone 7th card on desktop */
 
   /* ---------- privacy / security band ---------- */
   .security { background: linear-gradient(160deg, var(--deep) 0%, var(--accent) 100%); color: #fff; border-radius: 0; position: relative; overflow: hidden; }
@@ -291,6 +290,37 @@
   .mv__card h3 { font-size: 26px; margin: 12px 0 0; }
   .mv__card p { color: var(--muted); margin: 14px 0 0; font-size: 16.5px; line-height: 1.7; }
   .mv__card .corner { position: absolute; right: -40px; top: -40px; width: 150px; height: 150px; border-radius: 999px; background: var(--bg-tint); opacity: 0.7; }
+
+  /* ---------- take-ownership hub ---------- */
+  .hub { position: relative; max-width: 660px; margin: 6px auto 0; display: grid; grid-template-columns: 1fr 1.3fr 1fr; grid-template-rows: auto auto auto; gap: 16px; align-items: center; }
+  .hub::before, .hub::after { content: ""; position: absolute; background: var(--line-strong); z-index: 0; }
+  .hub::before { top: 50%; left: 22%; right: 22%; height: 2px; transform: translateY(-1px); }
+  .hub::after { left: 50%; top: 20%; bottom: 20%; width: 2px; transform: translateX(-1px); }
+  .hub > * { position: relative; z-index: 1; }
+  .hub__center { grid-column: 2; grid-row: 2; background: linear-gradient(135deg, var(--deep), var(--accent)); color: #fff; border-radius: var(--radius-lg); padding: 24px 16px; text-align: center; box-shadow: var(--shadow); }
+  .hub__center .hub__ic { width: 46px; height: 46px; margin: 0 auto 10px; border-radius: 14px; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; }
+  .hub__center .hub__ic svg { width: 24px; height: 24px; color: #fff; }
+  .hub__center h3 { color: #fff; font-size: 18px; line-height: 1.18; }
+  .pillar { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 15px 12px; text-align: center; box-shadow: var(--shadow-sm); transition: transform .2s ease, box-shadow .2s ease; }
+  .pillar:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+  .pillar__ic { width: 36px; height: 36px; margin: 0 auto 8px; border-radius: 11px; background: var(--bg-tint); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; }
+  .pillar__ic svg { width: 18px; height: 18px; color: var(--accent); }
+  .pillar b { font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--deep); }
+  .pillar--n { grid-column: 2; grid-row: 1; }
+  .pillar--w { grid-column: 1; grid-row: 2; }
+  .pillar--e { grid-column: 3; grid-row: 2; }
+  .pillar--s { grid-column: 2; grid-row: 3; }
+  .ownership__lede { max-width: 760px; margin: 40px auto 0; text-align: center; color: var(--muted); font-size: 18px; line-height: 1.8; }
+  @media (max-width: 760px) {
+    .hub { grid-template-columns: 1fr 1fr; gap: 12px; max-width: 400px; }
+    .hub::before, .hub::after { display: none; }
+    .hub__center { grid-column: 1 / -1; grid-row: 1; }
+    .pillar--n { grid-column: 1; grid-row: 2; }
+    .pillar--w { grid-column: 2; grid-row: 2; }
+    .pillar--e { grid-column: 1; grid-row: 3; }
+    .pillar--s { grid-column: 2; grid-row: 3; }
+    .ownership__lede { font-size: 16px; margin-top: 30px; }
+  }
 
   /* ---------- download CTA ---------- */
   .cta-band { padding: 30px 0 110px; }
@@ -360,7 +390,6 @@
     .hero__grid { grid-template-columns: 1fr; gap: 44px; }
     .mock { order: -1; }
     .feature-grid, .steps { grid-template-columns: repeat(2,1fr); }
-    .feature-grid .feature:nth-child(7) { grid-column: auto; }
     .security__grid, .mv__grid { grid-template-columns: 1fr; }
     .footer__top { grid-template-columns: 1fr 1fr; }
   }
@@ -501,7 +530,7 @@
       <nav class="nav__links" aria-label="Primary">
         <a href="#features">Features</a>
         <a href="#security">Privacy &amp; security</a>
-        <a href="#how">How it works</a>
+        <a href="#ownership">Platform</a>
         <a href="#mission">Mission</a>
       </nav>
       <div class="nav__cta">
@@ -538,7 +567,7 @@
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 3l14 9-14 9V3z"/></svg>
             <span class="s"><small>Get it on</small><b>Google Play</b></span>
           </a>
-          <a class="btn btn--ghost" href="#how">See how it works</a>
+          <a class="btn btn--ghost" href="#ownership">See how it works</a>
         </div>
         <div class="hero__trust">
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>HIPAA-aligned safeguards</span>
@@ -585,80 +614,113 @@
     </div>
   </section>
 
-  <!-- TRUST STRIP -->
-  <div class="strip">
-    <div class="container strip__row">
-      <span class="strip__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Privacy-first</span>
-      <span class="strip__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>HIPAA-aligned</span>
-      <span class="strip__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>No data selling</span>
-      <span class="strip__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>You stay in control</span>
+  <!-- TAKE OWNERSHIP -->
+  <section class="section" id="ownership">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow"><span class="dot"></span>Patient-centered care</span>
+        <h2>Take ownership of your health.</h2>
+      </div>
+      <div class="hub reveal">
+        <div class="pillar pillar--n">
+          <span class="pillar__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span>
+          <b>Comprehensive</b>
+        </div>
+        <div class="pillar pillar--w">
+          <span class="pillar__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 109-9"/><path d="M3 4v5h5"/></svg></span>
+          <b>Continuous</b>
+        </div>
+        <div class="hub__center">
+          <span class="hub__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 000-7.8z"/></svg></span>
+          <h3>Patient-Centered Healthcare</h3>
+        </div>
+        <div class="pillar pillar--e">
+          <span class="pillar__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg></span>
+          <b>Integrated</b>
+        </div>
+        <div class="pillar pillar--s">
+          <span class="pillar__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <b>HIPAA-Aligned</b>
+        </div>
+      </div>
+      <p class="ownership__lede reveal">OxynX enables users to navigate through the complexities of healthcare systems. It enables them to stay on top of their health and make informed decisions to receive comprehensive, integrated, continuous, and patient-centered care.</p>
     </div>
-  </div>
+  </section>
 
-  <!-- FEATURES -->
+  <!-- ALL-IN-ONE FEATURES -->
   <section class="section features" id="features">
     <div class="container">
       <div class="section-head reveal">
-        <span class="eyebrow"><span class="dot"></span>One clear system</span>
-        <h2>Everything your health needs, in one place</h2>
-        <p>Records, medications, nutrition, workouts, prevention and more — connected so your care actually keeps moving.</p>
+        <span class="eyebrow"><span class="dot"></span>One comprehensive platform</span>
+        <h2>An all-in-one health app.</h2>
       </div>
       <div class="feature-grid">
         <article class="feature reveal">
-          <div class="feature__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></div>
-          <h3>Records, organized</h3>
-          <p>Keep visits, documents, and history in one secure place — easy to find when it matters.</p>
-        </article>
-        <article class="feature reveal">
-          <div class="feature__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20.5l-7-7a4.95 4.95 0 017-7l7 7a4.95 4.95 0 01-7 7z"/><path d="M8.5 8.5l7 7"/></svg></div>
-          <h3>Medications &amp; reminders</h3>
-          <p>Smart reminders for medications, refills, and check-ins, so nothing slips through the cracks.</p>
+          <div class="feature__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9 14 11l-2 5-2-5L5.5 9l4.6-1.4L12 3z"/></svg></div>
+          <h3>AI Support</h3>
+          <p>Your AI companion helps you understand your health better and track your symptoms.</p>
         </article>
         <article class="feature reveal">
           <div class="feature__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7a4 4 0 008 0V2M7 2v20M21 15V2a4 4 0 00-3 6.9c0 .7.5 6.1 3 6.1zM18 15v7"/></svg></div>
-          <h3>Nutrition &amp; meal plans</h3>
-          <p>Personalized meal plans, logging, and calorie tracking tailored to your goals and preferences.</p>
+          <h3>Nutrition Support</h3>
+          <p>Receive personalized nutrition support tailored to your own health. Create meal plans, log your intake, and track your calorie intake.</p>
         </article>
         <article class="feature reveal">
           <div class="feature__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7v10M8 5v14M16 5v14M20 7v10M8 12h8"/></svg></div>
-          <h3>Workout planner</h3>
-          <p>Personalized workout plans built around your goals and fitness level — so movement and nutrition work together.</p>
+          <h3>Exercise Planner</h3>
+          <p>Receive personalized exercise plans tailored to your own health and goals. Monitor the calories you spend.</p>
         </article>
         <article class="feature reveal">
-          <div class="feature__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-          <h3>Cycle &amp; period tracking</h3>
-          <p>Track cycles and patterns with privacy built in — your data stays yours, always.</p>
+          <div class="feature__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20.5l-7-7a4.95 4.95 0 017-7l7 7a4.95 4.95 0 01-7 7z"/><path d="M8.5 8.5l7 7"/></svg></div>
+          <h3>Medication Reminder</h3>
+          <p>Log your medications and receive reminders to help you adhere to your medications.</p>
+        </article>
+        <article class="feature reveal">
+          <div class="feature__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></div>
+          <h3>Medical Records</h3>
+          <p>Upload and store all your medical records in one place.</p>
+        </article>
+        <article class="feature reveal">
+          <div class="feature__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2h-2"/><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M9 13h6M9 17h4"/></svg></div>
+          <h3>Visit Records</h3>
+          <p>Record your doctor visits and receive a transcription with a summary of the plan.</p>
+        </article>
+        <article class="feature reveal">
+          <div class="feature__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+          <h3>Cycle Tracker</h3>
+          <p>Track your menstrual cycles.</p>
         </article>
         <article class="feature reveal">
           <div class="feature__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
-          <h3>Prevention &amp; screenings</h3>
-          <p>Stay ahead with preventive guidance and screening follow-through based on trusted recommendations.</p>
+          <h3>Prevention &amp; Screening Tests</h3>
+          <p>Stay up to date with USPSTF-recommended preventive measures.</p>
         </article>
         <article class="feature reveal">
-          <div class="feature__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9 14 11l-2 5-2-5L5.5 9l4.6-1.4L12 3z"/></svg></div>
-          <h3>AI assist</h3>
-          <p>Optional AI helps organize and summarize your health — designed to support, never to replace your clinician.</p>
+          <div class="feature__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+          <h3>Disease-Specific Modules</h3>
+          <p>Monitor certain health conditions such as diabetes and high blood pressure.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- SECURITY -->
+  <!-- PRIVACY FIRST -->
   <section class="section security" id="security">
     <div class="container security__grid">
       <div class="reveal">
-        <span class="eyebrow"><span class="dot"></span>Built private</span>
-        <h2>Your health data is yours. We protect it like it.</h2>
+        <span class="eyebrow"><span class="dot"></span>Privacy first</span>
+        <h2>Your health data is yours.</h2>
         <p class="security__lede">
-          OxynX is a privacy-first health platform with HIPAA-aligned safeguards and contractual controls
-          designed to support compliant handling of protected health information. We don’t sell personal
-          data or health data — ever.
+          Your health data will always remain yours, and will never be shared without your consent.
+          OxynX is committed to the highest privacy standards, with HIPAA-aligned safeguards in place
+          to ensure safe handling of protected health information. OxynX will never sell the personal
+          data of its users.
         </p>
         <ul class="security__list">
           <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Encrypted in transit</b> over HTTPS/TLS, with access controls and audit logging.</span></li>
-          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>No selling of data.</b> We don’t use health data for advertising personalization.</span></li>
-          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>De-identified only with consent</b> for safety, analytics, and privacy-first improvement.</span></li>
-          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Delete anytime.</b> Request account and data deletion whenever you choose.</span></li>
+          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>No selling of data.</b> OxynX will never sell your personal data.</span></li>
+          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>De-identified data.</b> Only de-identified data is used for analytics and app improvements.</span></li>
+          <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Delete anytime.</b> Request to delete your account and data at any point.</span></li>
         </ul>
         <div style="margin-top:28px"><a class="btn btn--gold" href="privacy/">Read our Privacy Policy</a></div>
       </div>
@@ -679,36 +741,20 @@
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="section" id="how">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow"><span class="dot"></span>How it works</span>
-        <h2>Set up once. Stay on track every day.</h2>
-        <p>OxynX is built to feel simple for real people — not another thing to manage.</p>
-      </div>
-      <div class="steps">
-        <div class="step reveal"><div class="step__num"></div><h3>Bring it together</h3><p>Add your records, medications, and routines — or import from health platforms you authorize.</p></div>
-        <div class="step reveal"><div class="step__num"></div><h3>Get clear support</h3><p>Reminders, meal plans, prevention prompts, and summaries keep everything moving between visits.</p></div>
-        <div class="step reveal"><div class="step__num"></div><h3>Stay in control</h3><p>You decide what’s shared and what’s private. Adjust permissions or delete your data at any time.</p></div>
-      </div>
-    </div>
-  </section>
-
   <!-- MISSION / VISION -->
   <section class="section mv" id="mission">
     <div class="container mv__grid">
       <article class="mv__card reveal">
         <span class="corner"></span>
         <div class="k">Mission</div>
-        <h3>Less confusion, stronger privacy</h3>
-        <p>Our mission is to help people move through health care with less confusion, stronger privacy, and clearer support in the moments that matter most.</p>
+        <h3>Ownership and informed decisions</h3>
+        <p>To enable users to take ownership of their health, control the flow of their health information, make informed health decisions, and navigate through the complexities of healthcare to receive optimized healthcare.</p>
       </article>
       <article class="mv__card reveal">
         <span class="corner"></span>
         <div class="k">Vision</div>
-        <h3>One clear health experience</h3>
-        <p>We see a health experience where records, visits, medications, reminders, and prevention work together in one clear system that feels simple for real people to use.</p>
+        <h3>Continuous, quality care</h3>
+        <p>A comprehensive, integrated platform that helps individuals stay in charge of their health and receive continuous, quality care that is tailored to their needs.</p>
       </article>
     </div>
   </section>
@@ -749,7 +795,7 @@
           <h4>Product</h4>
           <a href="#features">Features</a>
           <a href="#security">Privacy &amp; security</a>
-          <a href="#how">How it works</a>
+          <a href="#ownership">Take ownership</a>
           <a href="#download">Download our app</a>
         </div>
         <div class="footer__col">
