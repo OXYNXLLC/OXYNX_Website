@@ -524,6 +524,87 @@
     .mdock__cta { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 7px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; font-weight: 700; font-size: 14px; padding: 11px 20px; border-radius: 999px; box-shadow: 0 8px 20px rgba(75,30,120,0.45); }
     .mdock__cta:active { transform: scale(0.97); color: #fff; }
   }
+
+  /* ============================================================
+     EDITORIAL / CINEMATIC THEME
+     architecture inspired by spacex.com + foundersfund.com
+     (appended last so it intentionally overrides the styles above)
+     ============================================================ */
+  :root { --jet: #0d0712; }
+
+  /* minimal uppercase nav — transparent over the hero, dark on scroll */
+  .nav { background: transparent; backdrop-filter: none; border-bottom: 1px solid transparent; }
+  .nav .brand, .nav .brand:hover { color: #fff; }
+  .nav__links a { color: rgba(255,255,255,0.70); text-transform: uppercase; letter-spacing: 0.16em; font-size: 11.5px; font-weight: 600; }
+  .nav__links a:hover { color: #fff; }
+  .nav__toggle { border-color: rgba(255,255,255,0.28); }
+  .nav__toggle svg { color: #fff; }
+  .nav.is-stuck { background: rgba(13,7,18,0.82); backdrop-filter: saturate(140%) blur(16px); border-bottom-color: rgba(255,255,255,0.08); box-shadow: none; }
+  .nav__cta .btn--ghost { color: #fff; border-color: rgba(255,255,255,0.30); background: transparent; box-shadow: none; }
+  .nav__cta .btn--ghost:hover { color: #0d0712; background: #fff; border-color: #fff; }
+
+  /* line-led uppercase kickers */
+  .eyebrow { background: none; border: 0; padding: 0; border-radius: 0; color: var(--accent-2); text-transform: uppercase; letter-spacing: 0.22em; font-size: 11.5px; font-weight: 700; gap: 14px; }
+  .eyebrow .dot { display: none; }
+  .eyebrow::before { content: ""; width: 30px; height: 1px; background: currentColor; opacity: 0.55; }
+  .hero .eyebrow, .security .eyebrow, .legal-hero .eyebrow, .cta-card .eyebrow { color: var(--gold); }
+
+  /* uppercase squared buttons (store badges keep their shape) */
+  .btn--primary, .btn--ghost, .btn--gold, .btn--light { text-transform: uppercase; letter-spacing: 0.12em; font-size: 12.5px; border-radius: 4px; }
+
+  /* generous editorial rhythm + big display headings */
+  .section { padding: 130px 0; }
+  .section-head { max-width: 780px; margin: 0 auto 60px; }
+  .section-head h2 { font-size: clamp(34px, 5.2vw, 60px); letter-spacing: -0.025em; line-height: 1.03; }
+  .section-head p { font-size: 19px; }
+
+  /* HERO — full-height, cinematic, dark */
+  .hero { min-height: 94vh; display: flex; align-items: center; padding: 120px 0 90px; background: radial-gradient(125% 120% at 82% 0%, #3d1a63 0%, #2a1737 46%, #150b1f 100%); }
+  .hero__bg { opacity: 0.7; }
+  .hero h1 { color: #fff; font-size: clamp(46px, 8vw, 92px); line-height: 0.96; letter-spacing: -0.04em; }
+  .hero h1 .grad { background: linear-gradient(100deg, #cdb0ff 0%, #ffd56b 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero__lede { color: rgba(255,255,255,0.76); }
+  .hero__lede strong { color: #fff; }
+  .hero__trust { color: rgba(255,255,255,0.58); }
+  .hero__trust svg { color: var(--gold); }
+  /* white store badges read better on the dark hero */
+  .hero .btn--store { background: #fff; border-color: rgba(0,0,0,0.08); }
+  .hero .btn--store svg, .hero .btn--store .s b { color: #0d0712; }
+  .hero .btn--store .s small { color: #4a4358; opacity: 1; }
+  /* hub becomes glass on dark */
+  .hero .pillar { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.13); box-shadow: none; }
+  .hero .pillar:hover { background: rgba(255,255,255,0.09); box-shadow: none; }
+  .hero .pillar b { color: #fff; }
+  .hero .pillar__ic { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.16); }
+  .hero .pillar__ic svg { color: var(--gold); }
+  .hero .hub::before, .hero .hub::after { background: rgba(255,255,255,0.16); }
+  .hero .hub__center { border: 1px solid rgba(255,255,255,0.14); box-shadow: 0 26px 64px rgba(0,0,0,0.5); }
+
+  /* FEATURES — architectural hairline grid, numbered, uppercase */
+  .feature-grid { gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; counter-reset: feat; }
+  .feature { background: var(--bg); border: none; border-radius: 0; box-shadow: none; padding: 40px 32px; position: relative; }
+  .feature:hover { transform: none; box-shadow: none; background: var(--bg-soft); }
+  .feature__ic { background: none; border: none; width: auto; height: auto; margin-bottom: 18px; }
+  .feature__ic svg { width: 27px; height: 27px; }
+  .feature h3 { text-transform: uppercase; letter-spacing: 0.05em; font-size: 15px; }
+  .feature p { font-size: 15px; }
+  .feature::before { counter-increment: feat; content: counter(feat, decimal-leading-zero); position: absolute; top: 22px; right: 26px; font-family: var(--font-display); font-size: 12px; font-weight: 700; color: var(--accent-2); opacity: 0.45; letter-spacing: 0.05em; }
+
+  /* deeper full-bleed bands */
+  .security { background: radial-gradient(120% 120% at 85% 0%, #3a1860 0%, #291735 50%, #160c1e 100%); }
+  .footer { background: var(--jet); }
+
+  /* mobile adjustments for the new theme */
+  @media (max-width: 760px) {
+    .section { padding: 84px 0; }
+    .section-head { margin-bottom: 40px; }
+    .hero { min-height: auto; padding: 92px 0 60px; }
+    .nav.open .nav__links { background: rgba(13,7,18,0.97); border-bottom-color: rgba(255,255,255,0.08); }
+    .nav.open .nav__links a { color: rgba(255,255,255,0.85); border-bottom-color: rgba(255,255,255,0.08); }
+    .feature { display: block; padding: 28px 22px; }
+    .feature__ic, .feature h3, .feature p { grid-column: auto; grid-row: auto; }
+    .feature::before { top: 18px; right: 20px; }
+  }
   </style>
 </head>
 <body>
