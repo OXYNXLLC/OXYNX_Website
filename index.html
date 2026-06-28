@@ -291,30 +291,34 @@
   .mv__card p { color: var(--muted); margin: 14px 0 0; font-size: 16.5px; line-height: 1.7; }
   .mv__card .corner { position: absolute; right: -40px; top: -40px; width: 150px; height: 150px; border-radius: 999px; background: var(--bg-tint); opacity: 0.7; }
 
-  /* ---------- take-ownership hub ---------- */
-  .hub { position: relative; max-width: 660px; margin: 6px auto 0; display: grid; grid-template-columns: 1fr 1.3fr 1fr; grid-template-rows: auto auto auto; gap: 16px; align-items: center; }
+  /* ---------- patient-centered hub (hero visual) ---------- */
+  .hub { position: relative; width: 100%; max-width: 540px; margin: 0 auto; justify-self: center; display: grid; grid-template-columns: 1fr 1.2fr 1fr; grid-template-rows: auto auto auto; gap: 18px; align-items: center; }
   .hub::before, .hub::after { content: ""; position: absolute; background: var(--line-strong); z-index: 0; }
-  .hub::before { top: 50%; left: 22%; right: 22%; height: 2px; transform: translateY(-1px); }
-  .hub::after { left: 50%; top: 20%; bottom: 20%; width: 2px; transform: translateX(-1px); }
+  .hub::before { top: 50%; left: 20%; right: 20%; height: 2px; transform: translateY(-1px); }
+  .hub::after { left: 50%; top: 18%; bottom: 18%; width: 2px; transform: translateX(-1px); }
   .hub > * { position: relative; z-index: 1; }
-  .hub__center { grid-column: 2; grid-row: 2; background: linear-gradient(135deg, var(--deep), var(--accent)); color: #fff; border-radius: var(--radius-lg); padding: 24px 16px; text-align: center; box-shadow: var(--shadow); }
-  .hub__center .hub__ic { width: 46px; height: 46px; margin: 0 auto 10px; border-radius: 14px; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; }
-  .hub__center .hub__ic svg { width: 24px; height: 24px; color: #fff; }
-  .hub__center h3 { color: #fff; font-size: 18px; line-height: 1.18; }
-  .pillar { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 15px 12px; text-align: center; box-shadow: var(--shadow-sm); transition: transform .2s ease, box-shadow .2s ease; }
+  .hub__center { grid-column: 2; grid-row: 2; background: linear-gradient(135deg, var(--deep), var(--accent)); color: #fff; border-radius: var(--radius-lg); padding: 32px 18px; text-align: center; box-shadow: var(--shadow); }
+  .hub__center .hub__ic { width: 58px; height: 58px; margin: 0 auto 12px; border-radius: 16px; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; }
+  .hub__center .hub__ic svg { width: 30px; height: 30px; color: #fff; }
+  .hub__center h3 { color: #fff; font-size: 20px; line-height: 1.18; }
+  .pillar { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px 14px; text-align: center; box-shadow: var(--shadow-sm); transition: transform .2s ease, box-shadow .2s ease; }
   .pillar:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-  .pillar__ic { width: 36px; height: 36px; margin: 0 auto 8px; border-radius: 11px; background: var(--bg-tint); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; }
-  .pillar__ic svg { width: 18px; height: 18px; color: var(--accent); }
-  .pillar b { font-family: var(--font-display); font-weight: 700; font-size: 15px; color: var(--deep); }
+  .pillar__ic { width: 46px; height: 46px; margin: 0 auto 10px; border-radius: 13px; background: var(--bg-tint); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; }
+  .pillar__ic svg { width: 23px; height: 23px; color: var(--accent); }
+  .pillar b { font-family: var(--font-display); font-weight: 700; font-size: 16.5px; color: var(--deep); }
   .pillar--n { grid-column: 2; grid-row: 1; }
   .pillar--w { grid-column: 1; grid-row: 2; }
   .pillar--e { grid-column: 3; grid-row: 2; }
   .pillar--s { grid-column: 2; grid-row: 3; }
   .ownership__lede { max-width: 760px; margin: 40px auto 0; text-align: center; color: var(--muted); font-size: 18px; line-height: 1.8; }
+  @media (max-width: 980px) {
+    .hub { max-width: 560px; }
+  }
   @media (max-width: 760px) {
-    .hub { grid-template-columns: 1fr 1fr; gap: 12px; max-width: 400px; }
+    .hub { grid-template-columns: 1fr 1fr; gap: 12px; max-width: 430px; }
     .hub::before, .hub::after { display: none; }
-    .hub__center { grid-column: 1 / -1; grid-row: 1; }
+    .hub__center { grid-column: 1 / -1; grid-row: 1; padding: 26px 16px; }
+    .pillar { padding: 20px 12px; }
     .pillar--n { grid-column: 1; grid-row: 2; }
     .pillar--w { grid-column: 2; grid-row: 2; }
     .pillar--e { grid-column: 1; grid-row: 3; }
@@ -530,7 +534,6 @@
       <nav class="nav__links" aria-label="Primary">
         <a href="#features">Features</a>
         <a href="#security">Privacy &amp; security</a>
-        <a href="#ownership">Platform</a>
         <a href="#mission">Mission</a>
       </nav>
       <div class="nav__cta">
@@ -543,18 +546,17 @@
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
+  <!-- HERO: TAKE OWNERSHIP -->
+  <section class="hero" id="ownership">
     <div class="hero__bg"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
     <div class="container hero__grid">
       <div class="hero__copy reveal">
-        <span class="eyebrow"><span class="dot"></span>Privacy-first health platform</span>
-        <h1>Health care,<br/>made <span class="grad">simple.</span><br/>Privacy kept intact.</h1>
+        <span class="eyebrow"><span class="dot"></span>Patient-centered care</span>
+        <h1>Take ownership of<br/><span class="grad">your health.</span></h1>
         <p class="hero__lede">
-          OxynX helps people move through health care with more simplicity, continuity, and control.
-          <strong>Less confusion. More confidence.</strong> We bring together records, routines,
-          reminders, and everyday decisions in a privacy-first system built to support prevention and
-          help you stay on track.
+          OxynX enables users to navigate through the complexities of healthcare systems. It enables
+          them to stay on top of their health and make informed decisions to receive comprehensive,
+          integrated, continuous, and patient-centered care.
         </p>
         <div class="hero__actions store-row">
           <!-- TODO: after App Store approval, paste your App Store URL into href="#" below -->
@@ -567,60 +569,15 @@
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 3l14 9-14 9V3z"/></svg>
             <span class="s"><small>Get it on</small><b>Google Play</b></span>
           </a>
-          <a class="btn btn--ghost" href="#ownership">See how it works</a>
         </div>
         <div class="hero__trust">
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>HIPAA-aligned safeguards</span>
           <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>We never sell your data</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>Encrypted end to end in transit</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>Encrypted in transit</span>
         </div>
       </div>
 
-      <!-- phone mockup -->
-      <div class="mock reveal" aria-hidden="true">
-        <div class="mock__pill mock__pill--a"><span class="pulse"></span>Reminder taken</div>
-        <div class="mock__pill mock__pill--b">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#7a42b1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Private by design
-        </div>
-        <div class="mock__phone">
-          <div class="mock__screen">
-            <div class="mock__topbar">
-              <div class="greet">Good morning</div>
-              <div class="name">Today’s plan</div>
-            </div>
-            <div class="mock__body">
-              <div class="mock__card">
-                <span class="mock__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
-                <div><div class="t">3 reminders due</div><div class="s">Medications &amp; check-ins</div></div>
-              </div>
-              <div class="mock__card">
-                <span class="mock__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18M7 11V7a5 5 0 0110 0v4"/><rect x="3" y="11" width="18" height="10" rx="2"/></svg></span>
-                <div><div class="t">Records, organized</div><div class="s">Visits &amp; documents</div></div>
-              </div>
-              <div class="mock__card">
-                <span class="mock__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0z"/><path d="M12 7v5l3 2"/></svg></span>
-                <div><div class="t">Today’s meal plan</div><div class="s">1,450 / 1,900 kcal</div></div>
-                <div class="mock__ring">76%</div>
-              </div>
-              <div class="mock__card">
-                <span class="mock__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 000-7.8z"/></svg></span>
-                <div><div class="t">Prevention on track</div><div class="s">Screenings up to date</div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TAKE OWNERSHIP -->
-  <section class="section" id="ownership">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow"><span class="dot"></span>Patient-centered care</span>
-        <h2>Take ownership of your health.</h2>
-      </div>
+      <!-- Patient-Centered Healthcare hub -->
       <div class="hub reveal">
         <div class="pillar pillar--n">
           <span class="pillar__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span>
@@ -643,7 +600,6 @@
           <b>HIPAA-Aligned</b>
         </div>
       </div>
-      <p class="ownership__lede reveal">OxynX enables users to navigate through the complexities of healthcare systems. It enables them to stay on top of their health and make informed decisions to receive comprehensive, integrated, continuous, and patient-centered care.</p>
     </div>
   </section>
 
