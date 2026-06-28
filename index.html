@@ -649,6 +649,80 @@
   @media (prefers-reduced-motion: reduce) {
     .hero__bg .b1, .hero__bg .b2, .hero__bg .b3, .hero .hub__center, .hero::after { animation: none; }
   }
+
+  /* ============================================================
+     AURORA — dramatic living theme (home page only)
+     full-screen animated gradient + glassmorphism, dark throughout
+     ============================================================ */
+  :root {
+    --bg: #0a0611;
+    --bg-soft: #100a1a;
+    --bg-tint: #1a1130;
+    --surface: #150e24;
+    --text: #efe9f7;
+    --muted: #b6a8d2;
+    --faint: #8c7fae;
+    --deep: #ffffff;
+    --line: rgba(255,255,255,0.10);
+    --line-strong: rgba(255,255,255,0.18);
+  }
+  html { background: #0a0611; }
+  body { background: #0a0611; color: var(--text); }
+
+  /* fixed, slowly-drifting aurora behind the entire page */
+  body::before {
+    content: ""; position: fixed; inset: -12%; z-index: -2; pointer-events: none;
+    background:
+      radial-gradient(36% 34% at 18% 12%, rgba(132,72,196,0.50), transparent 62%),
+      radial-gradient(34% 32% at 84% 8%, rgba(206,86,190,0.32), transparent 62%),
+      radial-gradient(42% 40% at 80% 74%, rgba(255,196,84,0.14), transparent 62%),
+      radial-gradient(38% 38% at 6% 88%, rgba(92,76,228,0.32), transparent 62%),
+      radial-gradient(44% 44% at 50% 48%, rgba(64,28,104,0.30), transparent 72%);
+    animation: aurora 26s ease-in-out infinite alternate;
+  }
+  body::after {
+    content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background: radial-gradient(125% 90% at 50% -10%, transparent 42%, rgba(10,6,17,0.72) 100%);
+  }
+  @keyframes aurora {
+    0%   { transform: translate3d(0,0,0) scale(1); }
+    50%  { transform: translate3d(-3%,2.5%,0) scale(1.1); }
+    100% { transform: translate3d(2.5%,-2%,0) scale(1.05); }
+  }
+
+  /* sections go translucent so the aurora flows through the whole page */
+  .hero, .features, .mv, .security, .cta-band { background: transparent; }
+  .hero::before { opacity: 0.5; }
+
+  /* glassmorphism cards */
+  .feature-grid { gap: 18px; background: transparent; border: none; border-radius: 0; overflow: visible; }
+  .feature { background: rgba(255,255,255,0.04); -webkit-backdrop-filter: saturate(150%) blur(14px); backdrop-filter: saturate(150%) blur(14px); border: 1px solid rgba(255,255,255,0.09); border-radius: var(--radius-lg); box-shadow: 0 22px 54px rgba(0,0,0,0.30); }
+  .feature:hover { background: rgba(255,255,255,0.07); box-shadow: 0 28px 64px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,213,107,0.30); }
+  .feature__ic svg { color: var(--gold); }
+  .mv__card { background: rgba(255,255,255,0.045); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-color: rgba(255,255,255,0.1); box-shadow: 0 22px 54px rgba(0,0,0,0.32); }
+  .mv__card .corner { background: rgba(132,72,196,0.28); opacity: 0.5; }
+  .shield-card { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.14); }
+
+  /* oversized, vivid hero */
+  .hero { min-height: 100vh; }
+  .hero h1 { font-size: clamp(54px, 9.6vw, 118px); line-height: 0.9; letter-spacing: -0.045em; }
+  .hero h1 .grad { background: linear-gradient(100deg, #dcbcff 0%, #ff9ad1 42%, #ffd56b 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero__lede { font-size: 20px; color: rgba(255,255,255,0.80); }
+
+  /* bigger headings; ensure light text on the dark canvas */
+  .section-head h2 { font-size: clamp(36px, 5.6vw, 66px); }
+  .security h2 { color: #fff; }
+  .footer { background: #070409; }
+
+  @media (max-width: 760px) {
+    .hero { min-height: auto; }
+    .hero h1 { font-size: clamp(40px, 12.5vw, 58px); }
+    .feature-grid { gap: 12px; }
+    body::before { inset: -6%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    body::before { animation: none; }
+  }
   </style>
 </head>
 <body>
