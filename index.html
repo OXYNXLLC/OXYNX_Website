@@ -723,6 +723,45 @@
   @media (prefers-reduced-motion: reduce) {
     body::before { animation: none; }
   }
+
+  /* ============================================================
+     LAYOUT REWORK — centered hero, pillar band, bento features
+     ============================================================ */
+  .hero { display: block; min-height: auto; align-items: initial; padding: 150px 0 100px; }
+  .hero__inner { position: relative; z-index: 2; max-width: 940px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center; }
+  .hero__inner h1 { font-size: clamp(46px, 8vw, 96px); }
+  .hero__inner .hero__lede { margin: 24px auto 0; max-width: 660px; }
+  .hero__inner .hero__actions { justify-content: center; margin-top: 32px; }
+  .hero__inner .hero__trust { justify-content: center; }
+
+  /* horizontal pillar band */
+  .pillars { width: 100%; margin-top: 60px; }
+  .pillars__label { display: block; text-transform: uppercase; letter-spacing: 0.22em; font-size: 11px; font-weight: 700; color: var(--gold); margin-bottom: 16px; }
+  .pillars__row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .pchip { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 18px 14px; border-radius: 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.10); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); font-family: var(--font-display); font-weight: 700; font-size: 15px; color: #fff; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
+  .pchip:hover { transform: translateY(-3px); background: rgba(255,255,255,0.09); border-color: rgba(255,213,107,0.35); }
+  .pchip svg { width: 18px; height: 18px; color: var(--gold); flex: 0 0 auto; }
+
+  /* bento feature mosaic (4 columns; 3 wide tiles span 2) */
+  .feature-grid { grid-template-columns: repeat(4, 1fr); grid-auto-flow: row; }
+  .feature.is-wide { grid-column: span 2; display: grid; grid-template-columns: auto 1fr; column-gap: 22px; align-items: start; }
+  .feature.is-wide .feature__ic { grid-row: 1 / span 2; margin-bottom: 0; align-self: start; }
+  .feature.is-wide h3 { grid-column: 2; align-self: center; }
+  .feature.is-wide p { grid-column: 2; }
+  .feature.is-wide::before { right: 26px; }
+
+  @media (max-width: 980px) {
+    .feature-grid { grid-template-columns: repeat(2, 1fr); }
+    .feature.is-wide { grid-column: auto; display: block; }
+    .feature.is-wide .feature__ic { margin-bottom: 18px; }
+    .feature.is-wide h3, .feature.is-wide p { grid-column: auto; }
+  }
+  @media (max-width: 760px) {
+    .hero { padding: 110px 0 64px; }
+    .feature-grid { grid-template-columns: 1fr; }
+    .pillars__row { grid-template-columns: 1fr 1fr; }
+    .pillars { margin-top: 44px; }
+  }
   </style>
 </head>
 <body>
@@ -748,55 +787,38 @@
   <!-- HERO: TAKE OWNERSHIP -->
   <section class="hero" id="ownership">
     <div class="hero__bg"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
-    <div class="container hero__grid">
-      <div class="hero__copy reveal">
-        <span class="eyebrow"><span class="dot"></span>Patient-centered care</span>
-        <h1>Take ownership of<br/><span class="grad">your health.</span></h1>
-        <p class="hero__lede">
-          OxynX enables users to navigate through the complexities of healthcare systems. It enables
-          them to stay on top of their health and make informed decisions to receive comprehensive,
-          integrated, continuous, and patient-centered care.
-        </p>
-        <div class="hero__actions store-row">
-          <!-- TODO: after App Store approval, paste your App Store URL into href="#" below -->
-          <a class="btn btn--store" href="#" aria-label="Download on the App Store">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.955 4.46z"/></svg>
-            <span class="s"><small>Download on the</small><b>App Store</b></span>
-          </a>
-          <!-- TODO: after Play Store approval, paste your Google Play URL into href="#" below -->
-          <a class="btn btn--store" href="#" aria-label="Get it on Google Play">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 3l14 9-14 9V3z"/></svg>
-            <span class="s"><small>Get it on</small><b>Google Play</b></span>
-          </a>
-        </div>
-        <div class="hero__trust">
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>HIPAA-aligned safeguards</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>We never sell your data</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>Encrypted in transit</span>
-        </div>
+    <div class="container hero__inner reveal">
+      <span class="eyebrow"><span class="dot"></span>Patient-centered care</span>
+      <h1>Take ownership of <span class="grad">your health.</span></h1>
+      <p class="hero__lede">
+        OxynX enables users to navigate through the complexities of healthcare systems. It enables
+        them to stay on top of their health and make informed decisions to receive comprehensive,
+        integrated, continuous, and patient-centered care.
+      </p>
+      <div class="hero__actions store-row">
+        <!-- TODO: after App Store approval, paste your App Store URL into href="#" below -->
+        <a class="btn btn--store" href="#" aria-label="Download on the App Store">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.613 0 2.886.06 4.374 2.19-.13.09-2.383 1.37-2.383 4.19 0 3.26 2.854 4.42 2.955 4.46z"/></svg>
+          <span class="s"><small>Download on the</small><b>App Store</b></span>
+        </a>
+        <!-- TODO: after Play Store approval, paste your Google Play URL into href="#" below -->
+        <a class="btn btn--store" href="#" aria-label="Get it on Google Play">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 3l14 9-14 9V3z"/></svg>
+          <span class="s"><small>Get it on</small><b>Google Play</b></span>
+        </a>
       </div>
-
-      <!-- Patient-Centered Healthcare hub -->
-      <div class="hub reveal">
-        <div class="pillar pillar--n">
-          <span class="pillar__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span>
-          <b>Comprehensive</b>
-        </div>
-        <div class="pillar pillar--w">
-          <span class="pillar__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 109-9"/><path d="M3 4v5h5"/></svg></span>
-          <b>Continuous</b>
-        </div>
-        <div class="hub__center">
-          <span class="hub__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 000-7.8z"/></svg></span>
-          <h3>Patient-Centered Healthcare</h3>
-        </div>
-        <div class="pillar pillar--e">
-          <span class="pillar__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg></span>
-          <b>Integrated</b>
-        </div>
-        <div class="pillar pillar--s">
-          <span class="pillar__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
-          <b>HIPAA-Aligned</b>
+      <div class="hero__trust">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>HIPAA-aligned safeguards</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>We never sell your data</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>Encrypted in transit</span>
+      </div>
+      <div class="pillars">
+        <span class="pillars__label">Patient-Centered Healthcare</span>
+        <div class="pillars__row">
+          <span class="pchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h10"/></svg>Comprehensive</span>
+          <span class="pchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg>Integrated</span>
+          <span class="pchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 109-9"/><path d="M3 4v5h5"/></svg>Continuous</span>
+          <span class="pchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>HIPAA-Aligned</span>
         </div>
       </div>
     </div>
@@ -810,7 +832,7 @@
         <h2>An all-in-one health app.</h2>
       </div>
       <div class="feature-grid">
-        <article class="feature reveal">
+        <article class="feature is-wide reveal">
           <div class="feature__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9 14 11l-2 5-2-5L5.5 9l4.6-1.4L12 3z"/></svg></div>
           <h3>AI Support</h3>
           <p>Your AI companion helps you understand your health better and track your symptoms.</p>
@@ -830,7 +852,7 @@
           <h3>Medication Reminder</h3>
           <p>Log your medications and receive reminders to help you adhere to your medications.</p>
         </article>
-        <article class="feature reveal">
+        <article class="feature is-wide reveal">
           <div class="feature__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></div>
           <h3>Medical Records</h3>
           <p>Upload and store all your medical records in one place.</p>
@@ -845,7 +867,7 @@
           <h3>Cycle Tracker</h3>
           <p>Track your menstrual cycles.</p>
         </article>
-        <article class="feature reveal">
+        <article class="feature is-wide reveal">
           <div class="feature__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
           <h3>Prevention &amp; Screening Tests</h3>
           <p>Stay up to date with USPSTF-recommended preventive measures.</p>
