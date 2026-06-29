@@ -780,6 +780,11 @@
     .hero { min-height: auto; padding: 110px 0 64px; }
     .hero__video { display: none; }
   }
+  /* pull the hero content to the right of the frame (desktop) */
+  @media (min-width: 1024px) {
+    .hero__inner { max-width: 660px; margin-left: auto; margin-right: clamp(120px, 16vw, 260px); }
+    .hero__inner h1 { font-size: clamp(46px, 6.4vw, 82px); }
+  }
   </style>
 </head>
 <body>
@@ -806,7 +811,7 @@
   <!-- HERO: TAKE OWNERSHIP -->
   <section class="hero" id="ownership">
     <div class="hero__bg"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
-    <div class="hero__video" aria-hidden="true"><video class="hero__bgvideo" muted loop playsinline preload="none" data-src="assets/hero-bg.mp4"></video></div>
+    <div class="hero__video" aria-hidden="true"><video class="hero__bgvideo" muted playsinline preload="none" data-src="assets/hero-bg.mp4"></video></div>
     <div class="container hero__inner reveal">
       <span class="eyebrow"><span class="dot"></span>Patient-centered care</span>
       <h1>Take ownership of <span class="grad">your health.</span></h1>
@@ -1089,11 +1094,15 @@
   (function () {
     var v = document.querySelector(".hero__bgvideo");
     if (!v) return;
-    var ok = window.innerWidth > 760 && !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!ok) return;
-    v.src = v.getAttribute("data-src");
+    if (window.innerWidth <= 760 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     var hero = v.closest(".hero"); if (hero) hero.classList.add("hero--video");
-    var p = v.play(); if (p && p.catch) p.catch(function () {});
+    var done = false;
+    function go() { if (done) return; var p = v.play(); if (p && p.then) { p.then(function () { done = true; }).catch(function () {}); } }
+    v.addEventListener("loadeddata", go);
+    v.addEventListener("canplay", go);
+    v.src = v.getAttribute("data-src");
+    v.load();
+    go();
   })();
   </script>
 
