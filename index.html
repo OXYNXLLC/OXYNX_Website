@@ -11,27 +11,27 @@
     gtag('config', 'G-YJ0913E5GP');
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>OxynX — Health care, made simple. Privacy kept intact.</title>
-  <meta name="description" content="OxynX is a privacy-first health platform that brings together records, medications, reminders, nutrition, cycle tracking, and prevention in one clear, secure app. HIPAA-aligned safeguards. We never sell your data." />
+  <title>OxynX — The All-in-One Private Health App</title>
+  <meta name="description" content="OxynX is an all-in-one private health app — records, medications, symptoms, nutrition and screenings in one secure, HIPAA-aligned place. iOS & Android." />
   <meta name="theme-color" content="#291735" />
   <link rel="canonical" href="https://oxynx.com/" />
 
-  <meta name="keywords" content="OxynX, health app, private health app, personal health record, medication reminders, symptom tracker, AI health companion, nutrition planner, preventive screening, HIPAA" />
+  <meta name="keywords" content="OxynX, OxynX Health, all-in-one health app, all in one health app, private health app, privacy health app, privacy-first health app, secure health app, personal health record app, medication reminders, symptom tracker, AI health companion, nutrition planner, preventive screening, HIPAA health app" />
   <meta name="author" content="OxynX, LLC" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="OxynX" />
   <meta property="og:locale" content="en_US" />
-  <meta property="og:title" content="OxynX — Health care, made simple. Privacy kept intact." />
-  <meta property="og:description" content="A privacy-first health app that brings your records, medications, reminders, nutrition, symptoms, and prevention into one clear, secure place. HIPAA-aligned. We never sell your data." />
+  <meta property="og:title" content="OxynX — The All-in-One Private Health App" />
+  <meta property="og:description" content="An all-in-one private health app: records, medications, symptoms, nutrition, workouts and preventive screenings in one secure place. HIPAA-aligned — we never sell your data." />
   <meta property="og:url" content="https://oxynx.com/" />
   <meta property="og:image" content="https://oxynx.com/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="OxynX — take ownership of your health." />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="OxynX — Health care, made simple. Privacy kept intact." />
-  <meta name="twitter:description" content="A privacy-first health app for records, medications, reminders, nutrition, and prevention — in one clear, secure place." />
+  <meta name="twitter:title" content="OxynX — The All-in-One Private Health App" />
+  <meta name="twitter:description" content="An all-in-one private health app: records, medications, symptoms, nutrition and preventive screenings in one secure place. HIPAA-aligned." />
   <meta name="twitter:image" content="https://oxynx.com/og-image.png" />
 
   <script type="application/ld+json">
@@ -42,6 +42,7 @@
         "@type": "Organization",
         "@id": "https://oxynx.com/#organization",
         "name": "OxynX",
+        "alternateName": ["OxynX Health", "OxynX App", "Oxynx"],
         "legalName": "OxynX, LLC",
         "url": "https://oxynx.com/",
         "logo": {
@@ -73,6 +74,21 @@
         "@id": "https://oxynx.com/#app",
         "name": "OxynX Health",
         "applicationCategory": "HealthApplication",
+        "applicationSubCategory": "All-in-one personal health record and health management app",
+        "alternateName": ["OxynX", "OxynX App"],
+        "keywords": "all-in-one health app, private health app, privacy-first health app, personal health record, medication reminders, symptom tracker, AI health companion, preventive screening",
+        "featureList": [
+          "AI health companion",
+          "Medical records in one place",
+          "Medication reminders",
+          "Symptom tracker with patterns and triggers",
+          "AI meal planner",
+          "Exercise planner",
+          "Cycle tracker",
+          "Visit recorder with transcripts and summaries",
+          "Preventive and screening test guidance",
+          "Disease-specific modules"
+        ],
         "operatingSystem": "iOS, Android",
         "url": "https://oxynx.com/",
         "installUrl": "https://oxynx.com/#download",
@@ -558,7 +574,7 @@
   /* ---------- superior mobile polish ---------- */
   .mdock { display: none; }
   @media (max-width: 760px) {
-    #features, #security, #how, #mission, #download { scroll-margin-top: 80px; }
+    #features, #security, #how, #mission, #faq, #download { scroll-margin-top: 80px; }
 
     /* centered, focused hero */
     .hero__copy { text-align: center; }
@@ -865,7 +881,102 @@
     /* shift the background video's framing to the right, away from the text */
     .hero__video { right: -22%; }
   }
+  /* ---------- FAQ (SEO content section) ---------- */
+  .faq__list { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+  .faq__item {
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 18px;
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    overflow: hidden;
+    transition: border-color .25s ease, background .25s ease;
+  }
+  .faq__item:hover { border-color: rgba(255,213,107,0.30); background: rgba(255,255,255,0.06); }
+  .faq__item[open] { border-color: rgba(255,213,107,0.34); background: rgba(255,255,255,0.07); }
+  .faq__item summary {
+    list-style: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 18px;
+    padding: 22px 24px;
+    font-family: var(--font-display); font-weight: 700; font-size: 17.5px; line-height: 1.35;
+    color: #fff;
+  }
+  .faq__item summary::-webkit-details-marker { display: none; }
+  .faq__item summary svg { flex: 0 0 auto; color: var(--gold); transition: transform .28s cubic-bezier(.2,.7,.3,1); }
+  .faq__item[open] summary svg { transform: rotate(180deg); }
+  .faq__a { padding: 0 24px 22px; }
+  .faq__a p { margin: 0; color: var(--muted); font-size: 16.5px; line-height: 1.72; }
+  @media (max-width: 760px) {
+    .faq__item summary { padding: 18px 18px; font-size: 16px; }
+    .faq__a { padding: 0 18px 18px; }
+    .faq__a p { font-size: 15.5px; }
+  }
+
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://oxynx.com/#faq",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is OxynX?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OxynX is an all-in-one private health app that helps you take ownership of your health. It brings your medical records, medications and reminders, symptoms, nutrition and workout plans, doctor-visit notes, and preventive screenings together in one secure place, with an AI health companion to answer everyday health questions. OxynX is available free on iOS and Android."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the best all-in-one health app?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A true all-in-one health app should cover more than step counts. OxynX was built to combine personal health records, medication reminders, symptom tracking with trigger patterns, meal and exercise planning, cycle tracking, visit recording, and preventive screening guidance in a single app — so your health information lives in one place instead of scattered across portals, paper folders, and separate trackers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is OxynX a private health app?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. OxynX is privacy-first by design. Your health data is yours: it is protected with HIPAA-aligned safeguards, encrypted in transit, and we never sell your data. You can request deletion of your account and associated data at any time, and OxynX gives you control over the flow of your health information."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which health app is most private and secure?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Privacy in a health app comes down to three things: whether your data is sold, how it is protected, and whether you can delete it. OxynX never sells your data, applies HIPAA-aligned safeguards with encryption in transit, and provides a clear account and data deletion process with a 30-day deletion window. Our third-party AI provider does not use your data to train its models."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the OxynX health app include?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OxynX includes an AI health companion, medical records storage, medication reminders, a symptom tracker that surfaces patterns and triggers, an AI meal planner, an exercise planner, a cycle tracker, a visit recorder with transcripts and summaries, preventive and screening test guidance, and disease-specific modules for chronic conditions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is OxynX free, and which devices does it support?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "OxynX is free to download on both iOS and Android. You can get it from the Apple App Store or Google Play."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does OxynX replace my doctor?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. OxynX does not provide a diagnosis and is not a substitute for professional medical advice. Its preventive, nutrition, activity, and general health guidance is informed by trusted, widely recognized public health authorities — you can review our sources on the health information sources page."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <canvas id="fx" aria-hidden="true"></canvas>
@@ -877,6 +988,7 @@
         <a href="#features">Features</a>
         <a href="#security">Privacy &amp; security</a>
         <a href="#mission">Mission</a>
+        <a href="#faq">FAQ</a>
       </nav>
       <div class="nav__cta">
         <a class="btn btn--ghost" href="support/">Support</a>
@@ -893,7 +1005,7 @@
     <div class="hero__bg"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
     <div class="hero__video" aria-hidden="true"><video class="hero__bgvideo" muted playsinline preload="none" data-src="assets/video2.mp4"></video></div>
     <div class="container hero__inner reveal">
-      <span class="eyebrow"><span class="dot"></span>Patient-centered care</span>
+      <span class="eyebrow"><span class="dot"></span>The all-in-one private health app</span>
       <h1>Take ownership of <span class="grad">your health.</span></h1>
       <p class="hero__lede">
         OxynX enables users to navigate through the complexities of healthcare systems. It enables
@@ -1039,6 +1151,47 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section class="section faq" id="faq">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow"><span class="dot"></span>Questions</span>
+        <h2>All-in-one health app, kept private</h2>
+        <p>What OxynX is, what's inside it, and how your health data stays yours.</p>
+      </div>
+      <div class="faq__list">
+        <details class="faq__item reveal">
+          <summary><span>What is OxynX?</span><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="faq__a"><p>OxynX is an all-in-one private health app that helps you take ownership of your health. It brings your medical records, medications and reminders, symptoms, nutrition and workout plans, doctor-visit notes, and preventive screenings together in one secure place, with an AI health companion to answer everyday health questions. OxynX is available free on iOS and Android.</p></div>
+        </details>
+        <details class="faq__item reveal">
+          <summary><span>What is the best all-in-one health app?</span><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="faq__a"><p>A true all-in-one health app should cover more than step counts. OxynX was built to combine personal health records, medication reminders, symptom tracking with trigger patterns, meal and exercise planning, cycle tracking, visit recording, and preventive screening guidance in a single app — so your health information lives in one place instead of scattered across portals, paper folders, and separate trackers.</p></div>
+        </details>
+        <details class="faq__item reveal">
+          <summary><span>Is OxynX a private health app?</span><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="faq__a"><p>Yes. OxynX is privacy-first by design. Your health data is yours: it is protected with HIPAA-aligned safeguards, encrypted in transit, and we never sell your data. You can request deletion of your account and associated data at any time, and OxynX gives you control over the flow of your health information.</p></div>
+        </details>
+        <details class="faq__item reveal">
+          <summary><span>Which health app is most private and secure?</span><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="faq__a"><p>Privacy in a health app comes down to three things: whether your data is sold, how it is protected, and whether you can delete it. OxynX never sells your data, applies HIPAA-aligned safeguards with encryption in transit, and provides a clear account and data deletion process with a 30-day deletion window. Our third-party AI provider does not use your data to train its models.</p></div>
+        </details>
+        <details class="faq__item reveal">
+          <summary><span>What does the OxynX health app include?</span><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="faq__a"><p>OxynX includes an AI health companion, medical records storage, medication reminders, a symptom tracker that surfaces patterns and triggers, an AI meal planner, an exercise planner, a cycle tracker, a visit recorder with transcripts and summaries, preventive and screening test guidance, and disease-specific modules for chronic conditions.</p></div>
+        </details>
+        <details class="faq__item reveal">
+          <summary><span>Is OxynX free, and which devices does it support?</span><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="faq__a"><p>OxynX is free to download on both iOS and Android. You can get it from the Apple App Store or Google Play.</p></div>
+        </details>
+        <details class="faq__item reveal">
+          <summary><span>Does OxynX replace my doctor?</span><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+          <div class="faq__a"><p>No. OxynX does not provide a diagnosis and is not a substitute for professional medical advice. Its preventive, nutrition, activity, and general health guidance is informed by trusted, widely recognized public health authorities — you can review our sources on the health information sources page.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <!-- DOWNLOAD CTA -->
   <section class="cta-band" id="download">
     <div class="container">
@@ -1074,6 +1227,7 @@
           <a href="#features">Features</a>
           <a href="#security">Privacy &amp; security</a>
           <a href="#ownership">Take ownership</a>
+          <a href="#faq">FAQ</a>
           <a href="#download">Download our app</a>
         </div>
         <div class="footer__col">
