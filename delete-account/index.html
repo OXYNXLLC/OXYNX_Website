@@ -26,7 +26,8 @@
   <meta name="twitter:title" content="Delete your account — OxynX" />
   <meta name="twitter:description" content="How to request permanent deletion of your OxynX account and associated data, what is deleted, what may be retained, and how long it takes." />
   <meta name="twitter:image" content="https://oxynx.com/og-image.png" />
-  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32" />
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -58,6 +59,9 @@
   .nav__inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
   .brand { display: inline-flex; align-items: center; gap: 11px; font-family: var(--font-display); font-weight: 700; font-size: 20px; color: var(--deep); letter-spacing: -0.02em; }
   .brand:hover { color: var(--deep); }
+  .brand__logo { width: 34px; height: 34px; flex: 0 0 auto; border-radius: 10px; box-shadow: 0 6px 18px -6px rgba(122, 66, 177, 0.6); transition: transform .3s ease; }
+  .brand:hover .brand__logo { transform: scale(1.05); }
+  @media (max-width: 359px) { .brand { gap: 8px; } .brand__logo { width: 30px; height: 30px; border-radius: 9px; } }
   .nav__links { display: flex; align-items: center; gap: 30px; }
   .nav__links a { color: var(--muted); font-weight: 500; font-size: 15px; }
   .nav__links a:hover { color: var(--deep); }
@@ -108,15 +112,66 @@
     .doc p { font-size: 16px; }
     .step .btn { width: 100%; justify-content: center; }
   }
+
+  /* ---------- mobile "get the app" bar (phones & tablets only; driven by the #oxbar script) ---------- */
+  .oxbar {
+    position: fixed; left: 0; right: 0; z-index: 55;
+    bottom: 12px; bottom: max(12px, env(safe-area-inset-bottom));
+    padding: 0 12px;
+    opacity: 0; visibility: hidden; transform: translateY(140%);
+    pointer-events: none;
+    transition: transform .5s cubic-bezier(.2,.7,.2,1), opacity .5s cubic-bezier(.2,.7,.2,1), visibility 0s linear .5s;
+  }
+  .oxbar.is-shown { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+  .oxbar__card {
+    display: flex; align-items: center; gap: 12px;
+    max-width: 448px; margin: 0 auto; padding: 10px 12px 10px 10px;
+    border-radius: 26px; background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: saturate(180%) blur(24px); backdrop-filter: saturate(180%) blur(24px);
+    box-shadow: 0 18px 50px -12px rgba(11, 6, 17, 0.45), 0 0 0 1px rgba(20, 10, 29, 0.08);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .oxbar.is-shown .oxbar__card { pointer-events: auto; }
+  .oxbar__logo { display: block; width: 56px; height: 56px; flex: 0 0 auto; border-radius: 14px; box-shadow: 0 4px 12px -4px rgba(41, 23, 53, 0.5); }
+  .oxbar__text { flex: 1 1 auto; min-width: 0; }
+  .oxbar__title, .oxbar__sub, .oxbar__store { margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .oxbar__title { font-family: "Sora", "Inter", sans-serif; font-size: 15.5px; font-weight: 600; line-height: 1.25; letter-spacing: -0.02em; color: #140a1d; }
+  .oxbar__sub { font-size: 12.5px; line-height: 1.4; color: rgba(20, 10, 29, 0.6); }
+  .oxbar__store { margin-top: 2px; font-size: 11.5px; font-weight: 500; line-height: 1.4; color: rgba(20, 10, 29, 0.75); }
+  .oxbar__store svg { display: inline-block; width: 12px; height: 12px; margin-right: 4px; vertical-align: -1.5px; }
+  .oxbar__cta {
+    flex: 0 0 auto; display: inline-flex; align-items: center;
+    padding: 12px 20px; border-radius: 999px;
+    background: #140a1d; color: #fff;
+    font-size: 14px; font-weight: 600; line-height: 1.2; text-decoration: none; white-space: nowrap;
+    transition: background .2s ease, transform .15s ease;
+  }
+  .oxbar__cta:hover { background: #3b2150; color: #fff; }
+  .oxbar__cta:active { transform: scale(.95); }
+  .oxbar__cta:focus-visible { outline: 2px solid #7a42b1; outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) {
+    .oxbar { transform: none; transition: opacity .3s ease, visibility 0s linear .3s; }
+    .oxbar.is-shown { transition-delay: 0s; }
+    .oxbar__cta { transition: none; }
+  }
+  @media (max-width: 369.98px) {
+    .oxbar__card { gap: 10px; }
+    .oxbar__logo { width: 44px; height: 44px; border-radius: 12px; }
+    .oxbar__title { font-size: 14.5px; }
+    .oxbar__sub, .oxbar__free { display: none; }
+    .oxbar__store { font-size: 11px; }
+    .oxbar__cta { padding: 11px 14px; font-size: 13.5px; }
+  }
+  @media print { .oxbar { display: none !important; } }
   </style>
 </head>
 <body>
   <header class="nav" id="nav">
     <div class="container nav__inner">
-      <a class="brand" href="../" aria-label="OxynX home">OxynX</a>
+      <a class="brand" href="../" aria-label="OxynX home"><img class="brand__logo" src="../assets/oxynx-logo.png" alt="" width="34" height="34" />OxynX</a>
       <nav class="nav__links" aria-label="Primary">
         <a href="../#features">Features</a>
-        <a href="../#security">Privacy &amp; security</a>
+        <a href="../#privacy">Privacy &amp; security</a>
         <a href="../privacy/">Privacy Policy</a>
       </nav>
       <div class="nav__cta">
@@ -202,6 +257,83 @@
         toggle.setAttribute("aria-expanded", open ? "true" : "false");
       });
     }
+  })();
+  </script>
+
+  <!-- Mobile "get the app" bar: phones & tablets only. The script below picks the visitor's store
+       (App Store on iPhone/iPad, Google Play on Android) and never shows it on desktop. -->
+  <div class="oxbar" id="oxbar" hidden>
+    <div class="oxbar__card">
+      <img class="oxbar__logo" src="../assets/oxynx-logo.png" alt="" width="56" height="56" decoding="async" />
+      <div class="oxbar__text">
+        <p class="oxbar__title">OxynX Health</p>
+        <p class="oxbar__sub">All-in-one health app</p>
+        <p class="oxbar__store"><span data-store="ios"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.62c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.47.83-.72 0-1.82-.81-2.99-.79-1.54.02-2.96.9-3.75 2.27-1.6 2.78-.41 6.89 1.15 9.14.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.78.74 2.99.72 1.24-.02 2.02-1.12 2.77-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.66zM14.1 5.86c.63-.77 1.06-1.83.94-2.89-.91.04-2.02.61-2.67 1.37-.58.67-1.1 1.76-.96 2.8 1.02.08 2.06-.52 2.69-1.28z"/></svg><span class="oxbar__free">Free on the </span>App Store</span><span data-store="android"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.2 2.6 13.6 12l-9.4 9.4c-.4-.2-.7-.7-.7-1.3V3.9c0-.6.3-1.1.7-1.3z" fill="#34d3a0"/><path d="m16.7 8.9-3.1 3.1-9.4-9.4c.3-.2.8-.2 1.2 0l11.3 6.3z" fill="#ffd56b"/><path d="m16.7 15.1-11.3 6.3c-.4.2-.9.2-1.2 0l9.4-9.4 3.1 3.1z" fill="#ff7a9c"/><path d="m20.2 10.9c.8.5.8 1.7 0 2.2l-3.5 2-3.1-3.1 3.1-3.1 3.5 2z" fill="#7cc4ff"/></svg><span class="oxbar__free">Free on </span>Google Play</span></p>
+      </div>
+      <a class="oxbar__cta" href="https://apps.apple.com/us/app/oxynx-health/id6758890598" target="_blank" rel="noreferrer" tabindex="-1">Download</a>
+    </div>
+  </div>
+  <script>
+  (function () {
+    "use strict";
+    var bar = document.getElementById("oxbar");
+    if (!bar) return;
+    var ua = navigator.userAgent || "";
+    var platform = /android/i.test(ua) ? "android"
+      : (/iphone|ipad|ipod/i.test(ua) || (/macintosh/i.test(ua) && (navigator.maxTouchPoints || 0) > 1)) ? "ios"
+      : "other";
+    if (platform === "other") return; // desktop: never rendered
+
+    var ios = platform === "ios";
+    var cta = bar.querySelector(".oxbar__cta");
+    cta.href = ios ? "https://apps.apple.com/us/app/oxynx-health/id6758890598" : "https://play.google.com/store/apps/details?id=com.oxynx.oxynx";
+    cta.setAttribute("aria-label", ios ? "Download OxynX Health on the App Store" : "Download OxynX Health on Google Play");
+    var otherStore = bar.querySelector('[data-store]:not([data-store="' + platform + '"])');
+    if (otherStore) otherStore.parentNode.removeChild(otherStore);
+    cta.addEventListener("click", function () {
+      if (typeof window.gtag === "function") window.gtag("event", "download_click", { platform: platform, placement: "mobile_bar" });
+    });
+    bar.hidden = false;
+
+    var TOP = 160;          // "past the top area" on these pages (no hero store buttons)
+    var shown = false, nearFooter = false, anchorY = window.scrollY, dir = 1, idle;
+    var roomToScroll = function () { return document.documentElement.scrollHeight - window.innerHeight > TOP + 40; };
+    var pastTop = function () { return window.scrollY > TOP || !roomToScroll(); };
+    var render = function () {
+      var visible = shown && !nearFooter;
+      bar.classList.toggle("is-shown", visible);
+      if (visible) bar.removeAttribute("aria-hidden"); else bar.setAttribute("aria-hidden", "true");
+      cta.tabIndex = visible ? 0 : -1;
+      if ("inert" in bar) bar.inert = !visible;
+    };
+    var set = function (v) { if (v !== shown) { shown = v; render(); } };
+    // Reading pause: bring it back once the page has been still for a moment.
+    var rest = function () {
+      clearTimeout(idle);
+      idle = setTimeout(function () { if (pastTop()) set(true); }, 1200);
+    };
+    window.addEventListener("scroll", function () {
+      var y = window.scrollY;
+      clearTimeout(idle);
+      if (!pastTop()) { set(false); anchorY = y; return; }
+      // Measure from where the current scroll direction started, so slow scrolls count too.
+      var d = y >= anchorY ? 1 : -1;
+      if (d !== dir) { dir = d; anchorY = y; }
+      if (anchorY - y > 24) { set(true); anchorY = y; }        // scrolling up: show
+      else if (y - anchorY > 24) { set(false); anchorY = y; }  // scrolling down: tuck away
+      rest();
+    }, { passive: true });
+    // Keep the footer (and its links) clear: hide while it is on screen.
+    var footer = document.querySelector("footer");
+    if (footer && "IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        nearFooter = entries[0].isIntersecting;
+        render();
+      }).observe(footer);
+    }
+    render();
+    // Already past the top (restored scroll), or a short page with nothing to scroll past (e.g. 404).
+    if (pastTop()) rest();
   })();
   </script>
 </body>
